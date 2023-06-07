@@ -142,12 +142,20 @@ parsers: # array
               url: "https://cdn.jsdelivr.net/gh/kafuumi/clash_rules@latest/ruleset/bilibili.yaml",
               path: "./ruleset/bilibili.yaml",
               interval: 86400
+            },
+            direct_addition: {
+              type: "http",
+              behavior: "classical",
+              url: "https://cdn.jsdelivr.net/gh/kafuumi/clash_rules@latest/ruleset/direct.yaml",
+              path: "./ruleset/direct.yaml",
+              interval: 86400
             }
         },
         rules: [
             "DOMAIN,clash.razord.top,DIRECT",
             "DOMAIN,yacd.haishan.me, DIRECT",
             "RULE-SET,custom,手动控制",
+            "RULE-SET,direct_addition,国内直连",
             "RULE-SET,applications,DIRECT",
             "RULE-SET,private,DIRECT",
             "RULE-SET,reject,广告过滤",

@@ -1,3 +1,4 @@
+# 手动控制
 payload: 
   - PROCESS-NAME,qBittorrent
   - PROCESS-NAME,qbittorrent.exe
