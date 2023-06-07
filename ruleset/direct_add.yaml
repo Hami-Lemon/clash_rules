@@ -1,2 +1,3 @@
 # 直连
-payload: []
+payload:
+  - DOMAIN,download-cdn.jetbrains.com # jetbrain 下载cdn
