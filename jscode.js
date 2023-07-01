@@ -1,6 +1,6 @@
 const github_proxy = "https://raw.fastgit.org/"
 
-let protype = {
+let prototype = {
     port: 7890,
     "socks-port": 7891,
     "mixed-port": 7890,
@@ -26,7 +26,11 @@ let protype = {
     },
     proxies: [],
     "proxy-groups": [
-        {name: "节点选择", type: "select", proxies: ["自动选择", "故障转移", "负载均衡", "DIRECT"]},
+        {
+            name: "节点选择",
+            type: "select",
+            proxies: ["自动选择", "故障转移", "负载均衡", "香港节点组", "台湾节点组", "美国节点组", "日本节点组", "DIRECT"]
+        },
         {name: "哔哩哔哩", type: "select", proxies: ["DIRECT", "节点选择"]},
         {name: "动画疯", type: "select", proxies: ["节点选择"]},
         {name: "Steam", type: "select", proxies: ["DIRECT", "节点选择"]},
@@ -39,6 +43,10 @@ let protype = {
         {name: "漏网之鱼", type: "select", proxies: ["节点选择", "DIRECT"]},
         {name: "手动控制", type: "select", proxies: ["DIRECT", "节点选择", "REJECT"]},
         {name: "下载程序", type: "select", proxies: ["DIRECT", "节点选择"]},
+        {name: "香港节点组", type: "url-test", url: "http://www.gstatic.com/generate_204", interval: 300},
+        {name: "台湾节点组", type: "url-test", url: "http://www.gstatic.com/generate_204", interval: 300},
+        {name: "美国节点组", type: "url-test", url: "http://www.gstatic.com/generate_204", interval: 300},
+        {name: "日本节点组", type: "url-test", url: "http://www.gstatic.com/generate_204", interval: 300},
         {name: "自动选择", type: "url-test", url: "http://www.gstatic.com/generate_204", interval: 300},
         {name: "故障转移", type: "fallback", url: "http://www.gstatic.com/generate_204", interval: 300},
         {name: "负载均衡", type: "load-balance", url: "http://www.gstatic.com/generate_204", interval: 300}
@@ -184,26 +192,34 @@ module.exports.parse = async (raw, {axios, yaml, notify, console}, {name, url, i
     let proxies = []
     let tw = []
     let hk = []
+    let usa = []
+    let jp = []
 
     let regHK = /HK|香港|Hong Kong/i
-    let regTW = /TW|台湾/i
+    let regTW = /TW|台湾|TaiWan/i
+    let regUSA = /USA|United States|美国/i
+    let regJP = /JP|Japan|日本/i
     for (let i = 0; i < obj.proxies.length; i++) {
         let p = obj.proxies[i]
         let pn = p.name
 
-        protype.proxies.push(p)
+        prototype.proxies.push(p)
         proxies.push(pn)
         //根据名称分类
         if (pn.match(regHK)) {
             hk.push(pn)
         } else if (pn.match(regTW)) {
             tw.push(pn)
+        } else if (pn.match(regUSA)) {
+            usa.push(pn)
+        } else if (pn.match(regJP)) {
+            jp.push((pn))
         }
     }
 
     const groups = ["国内直连", "漏网之鱼", "手动控制", "下载程序"]
-    for (let i = 0; i < protype['proxy-groups'].length; i++) {
-        let pg = protype['proxy-groups'][i]
+    for (let i = 0; i < prototype['proxy-groups'].length; i++) {
+        let pg = prototype['proxy-groups'][i]
         let name = pg.name
         if (groups.includes(name)) {
             continue
@@ -215,7 +231,24 @@ module.exports.parse = async (raw, {axios, yaml, notify, console}, {name, url, i
             pg.proxies = pg.proxies.concat(hk, tw)
             continue
         }
+
+        if (name === "台湾节点组" && tw.length !== 0) {
+            pg.proxies = pg.proxies.concat(tw)
+            continue
+        }
+        if (name === "香港节点组" && hk.length !== 0) {
+            pg.proxies = pg.proxies.concat(hk)
+            continue
+        }
+        if (name === "日本节点组" && jp.length !== 0) {
+            pg.proxies = pg.proxies.concat(jp)
+            continue
+        }
+        if (name === "美国节点组" && usa.length !== 0) {
+            pg.proxies = pg.proxies.concat(usa)
+            continue
+        }
         pg.proxies = pg.proxies.concat(proxies)
     }
-    return yaml.stringify(protype)
+    return yaml.stringify(prototype)
 }
