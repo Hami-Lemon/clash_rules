@@ -1,4 +1,4 @@
-const github_proxy = "https://raw.fastgit.org/"
+const github_proxy = "https://fastly.jsdelivr.net/gh/"
 
 let prototype = {
     port: 7890,
@@ -56,7 +56,7 @@ let prototype = {
         apple: {
             type: "http",
             behavior: "classical",
-            url: github_proxy + "Semporia/Clash/master/Rule/Apple.yaml",
+            url: github_proxy + "Semporia/Clash@master/Rule/Apple.yaml",
             path: "./ruleset/apple.yaml",
             interval: 86400
         },
@@ -64,7 +64,7 @@ let prototype = {
         proxy: {
             type: "http",
             behavior: "domain",
-            url: github_proxy + "Loyalsoldier/clash-rules/release/proxy.txt",
+            url: github_proxy + "Loyalsoldier/clash-rules@release/proxy.txt",
             path: "./ruleset/proxy.yaml",
             interval: 86400
         },
@@ -72,7 +72,7 @@ let prototype = {
         direct: {
             type: "http",
             behavior: "domain",
-            url: github_proxy + "Semporia/Clash/master/Rule/China.yaml",
+            url: github_proxy + "Semporia/Clash@master/Rule/China.yaml",
             path: "./ruleset/direct.yaml",
             interval: 86400
         },
@@ -80,7 +80,7 @@ let prototype = {
         private: {
             type: "http",
             behavior: "domain",
-            url: github_proxy + "Loyalsoldier/clash-rules/release/private.txt",
+            url: github_proxy + "Loyalsoldier/clash-rules@release/private.txt",
             path: "./ruleset/private.yaml",
             interval: 86400
         },
@@ -88,7 +88,7 @@ let prototype = {
         google: {
             type: "http",
             behavior: "classical",
-            url: github_proxy + "Semporia/Clash/master/Rule/Google.yaml",
+            url: github_proxy + "Semporia/Clash@master/Rule/Google.yaml",
             path: "./ruleset/google.yaml",
             interval: 86400
         },
@@ -96,7 +96,7 @@ let prototype = {
         microsoft: {
             type: "http",
             behavior: "classical",
-            url: github_proxy + "Semporia/Clash/master/Rule/Microsoft.yaml",
+            url: github_proxy + "Semporia/Clash@master/Rule/Microsoft.yaml",
             path: "./ruleset/microsoft.yaml",
             interval: 86400
         },
@@ -104,7 +104,7 @@ let prototype = {
         steam: {
             type: "http",
             behavior: "classical",
-            url: github_proxy + "Semporia/Clash/master/Rule/Steam.yaml",
+            url: github_proxy + "Semporia/Clash@master/Rule/Steam.yaml",
             path: "./ruleset/steam.yaml",
             interval: 86400
         },
@@ -112,7 +112,7 @@ let prototype = {
         telegram: {
             type: "http",
             behavior: "classical",
-            url: github_proxy + "Semporia/Clash/master/Rule/Telegram.yaml",
+            url: github_proxy + "Semporia/Clash@master/Rule/Telegram.yaml",
             path: "./ruleset/telegram.yaml",
             interval: 86400
         },
@@ -120,7 +120,7 @@ let prototype = {
         youtube: {
             type: "http",
             behavior: "classical",
-            url: github_proxy + "Semporia/Clash/master/Rule/YouTube.yaml",
+            url: github_proxy + "Semporia/Clash@master/Rule/YouTube.yaml",
             path: "./ruleset/youtube.yaml",
             interval: 86400
         },
@@ -128,7 +128,7 @@ let prototype = {
         applications: {
             type: "http",
             behavior: "classical",
-            url: github_proxy + "Loyalsoldier/clash-rules/release/applications.txt",
+            url: github_proxy + "Loyalsoldier/clash-rules@release/applications.txt",
             path: "./ruleset/applications.yaml",
             interval: 86400
         },
@@ -136,7 +136,7 @@ let prototype = {
         custom: {
             type: "http",
             behavior: "classical",
-            url: github_proxy + "kafuumi/clash_rules/master/ruleset/custom.yaml",
+            url: github_proxy + "kafuumi/clash_rules@master/ruleset/custom.yaml",
             path: "./ruleset/custom.yaml",
             interval: 86400
         },
@@ -144,7 +144,7 @@ let prototype = {
         donghuafeng: {
             type: "http",
             behavior: "domain",
-            url: github_proxy + "kafuumi/clash_rules/master/ruleset/donghuafeng.yaml",
+            url: github_proxy + "kafuumi/clash_rules@master/ruleset/donghuafeng.yaml",
             path: "./ruleset/donghuafeng.yaml",
             interval: 86400
         },
@@ -152,7 +152,7 @@ let prototype = {
         bilibili: {
             type: "http",
             behavior: "classical",
-            url: github_proxy + "kafuumi/clash_rules/master/ruleset/bilibili.yaml",
+            url: github_proxy + "kafuumi/clash_rules@master/ruleset/bilibili.yaml",
             path: "./ruleset/bilibili.yaml",
             interval: 86400
         },
@@ -160,7 +160,7 @@ let prototype = {
         direct_addition: {
             type: "http",
             behavior: "classical",
-            url: github_proxy + "kafuumi/clash_rules/master/ruleset/direct_add.yaml",
+            url: github_proxy + "kafuumi/clash_rules@master/ruleset/direct_add.yaml",
             path: "./ruleset/direct_add.yaml",
             interval: 86400
         }
